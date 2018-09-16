@@ -25,14 +25,16 @@ export class NewBookComponent implements OnInit {
 
     this.profileForm = this.fb.group({
       authors: [''],
-      Published: ['',Validators.pattern(this.date_regex)],
+      Published: ['', Validators.pattern(this.date_regex)],
       pic: [""],
       title: ['', Validators.pattern(this.pattern)],
       id: ['', Validators.required]
     });
   }
-  
+
   saveBook(ngform) {
+    ngform.value['Published'] = Intl.DateTimeFormat('en-US').format(new Date(ngform.value['Published']))
+
     this.add.emit(ngform.value);
     this.createForm();
   }

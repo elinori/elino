@@ -5,12 +5,12 @@
 <div *ngIf="isSaved" class="alert alert-success mmesage">
   <strong>DONE</strong> DONE.
 </div>
-<button  class="btn btn-primary but-style" (click)="add()" type="button" data-toggle="modal" data-target="#exampleModal">NEW BOOK</button>
+<button class="btn btn-primary but-style" (click)="add()" type="button" data-toggle="modal" data-target="#exampleModal">NEW BOOK</button>
 
 <div *ngIf="isError" class="alert alert-danger mmesage  ">
   <strong>Error</strong> Sorry this book name exsist!.
 </div>
-<div  class="books">
+<div class="books">
 
   <mat-accordion>
     <mat-expansion-panel class="row" *ngFor="let book of books let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">

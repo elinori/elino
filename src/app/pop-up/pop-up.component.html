@@ -17,21 +17,21 @@
               <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().authors}}</p>
 
               <mat-form-field *ngIf="service.getflag()" class="example-full-width">
-                <input matInput  placeholder="enter authors" formControlName="authors" required value={{service.getSelectedBook().authors}}>
+                <input matInput placeholder="enter authors" formControlName="authors" required value={{service.getSelectedBook().authors}}>
               </mat-form-field>
               <h5 class="card-title card-h">title:</h5>
               <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().title}}</p>
 
               <mat-form-field *ngIf="service.getflag()" class="example-full-width">
-                <input  required matInput placeholder="enter title" formControlName="title" value={{service.getSelectedBook().title}}>
+                <input required matInput placeholder="enter title" formControlName="title" value={{service.getSelectedBook().title}}>
               </mat-form-field>
               <h5 class="card-title card-h">Published:</h5>
               <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().Published}}</p>
 
               <mat-form-field *ngIf="service.getflag()" class="example-full-width">
-                <input type="date" max="2018-09-25"  matInput   placeholder formControlName="Published" value={{service.getSelectedBook().Published}}>
+                <input type="date" max="2018-09-25" matInput placeholder formControlName="Published" value={{service.getSelectedBook().Published}}>
               </mat-form-field>
-              
+
             </form>
           </div>
         </div>
@@ -40,7 +40,7 @@
           <button type="button" class="btn btn-secondary
           " data-dismiss="modal">Cancel</button>
           <button *ngIf="service.getflag()" type="button" class="btn btn-primary 
-          " data-dismiss="modal" [disabled]="!profileForm.valid"   (click)="save(profileForm)">Save </button>
+          " data-dismiss="modal" [disabled]="!profileForm.valid" (click)="save(profileForm)">Save </button>
           <button *ngIf="!service.getflag()" type="button" class="btn btn-primary 
           " data-dismiss="modal" (click)="save(profileForm)">Delete </button>
         </div>
