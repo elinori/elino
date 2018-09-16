@@ -1,0 +1,49 @@
+.knockout {
+    background: url(http://apod.nasa.gov/apod/image/0603/coma_misti.jpg) -80px -80px;
+    color: red;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-weight: bold;
+    font-size: 100px;
+    font-family: arial, helvetica;
+    width: 600px;
+    margin: 60px auto;
+    text-align: center;
+    margin-left: 20%;
+  }
+  
+.filter{
+  margin-left: 30%;
+  margin-top: 6%;
+}
+
+.image{
+  height:5%;
+  width:10%;
+}
+
+.card2{
+  margin-left: 5%;
+}
+
+h3{
+  font-weight: bold;
+  color: blueviolet;
+  text-decoration: underline;
+}
+h5{
+  font-weight: bold;
+}
+
+.mmesage{
+  margin-top: 4%;
+}
+.but-style{
+  margin-left: 10%;
+}
+.but-del{
+  margin-left: 5%;
+}
+.books{
+  height: 100%;
+}

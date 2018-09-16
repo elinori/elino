@@ -1,0 +1,55 @@
+<a class="knockout" href="http://mksht.crisnoble.com" rel="Like cool shit? visit my site">
+
+  Books</a>
+
+<div *ngIf="isSaved" class="alert alert-success mmesage">
+  <strong>DONE</strong> DONE.
+</div>
+<button  class="btn btn-primary but-style" (click)="add()" type="button" data-toggle="modal" data-target="#exampleModal">NEW BOOK</button>
+
+<div *ngIf="isError" class="alert alert-danger mmesage  ">
+  <strong>Error</strong> Sorry this book name exsist!.
+</div>
+<div  class="books">
+
+  <mat-accordion>
+    <mat-expansion-panel class="row" *ngFor="let book of books let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        </mat-panel-title>
+        <mat-panel-description>
+
+          {{book.title |englishWordFilter }}
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div>
+        <app-book [book]="book"></app-book>
+
+      </div>
+      <mat-panel-description>
+      </mat-panel-description>
+
+      <div>
+        <button class="btn btn-primary
+      " (click)="editBook(book,true)" type="button" data-toggle="modal" data-target="#exampleModal" [disabled]="!profileForm.valid">Edite Book</button>
+
+
+        <button class="btn btn-primary but-del" (click)="delete(book,false)" type="button" data-toggle="modal" data-target="#exampleModal"
+          [disabled]="!profileForm.valid">Delete Book</button>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>
+
+<!-- Modal -->
+<div *ngIf="isEdite">
+  <app-pop-up (savebook)="saveBook($event)" (deletebook)="deleteBook($event)"></app-pop-up>
+</div>
+<div *ngIf="new">
+  <app-new-book (add)="addbook($event)"></app-new-book>
+</div>

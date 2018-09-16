@@ -1,0 +1,49 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card cardi">
+          <img class="image" src={{service.getSelectedBook().pic}} alt="">
+
+          <div class="card-body">
+            <form [formGroup]="profileForm" class="example-form">
+
+              <h5 class="card-title card-h">authors:</h5>
+              <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().authors}}</p>
+
+              <mat-form-field *ngIf="service.getflag()" class="example-full-width">
+                <input matInput  placeholder="enter authors" formControlName="authors" required value={{service.getSelectedBook().authors}}>
+              </mat-form-field>
+              <h5 class="card-title card-h">title:</h5>
+              <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().title}}</p>
+
+              <mat-form-field *ngIf="service.getflag()" class="example-full-width">
+                <input  required matInput placeholder="enter title" formControlName="title" value={{service.getSelectedBook().title}}>
+              </mat-form-field>
+              <h5 class="card-title card-h">Published:</h5>
+              <p *ngIf="!service.getflag()" class="card-text">{{service.getSelectedBook().Published}}</p>
+
+              <mat-form-field *ngIf="service.getflag()" class="example-full-width">
+                <input type="date" max="2018-09-25"  matInput   placeholder formControlName="Published" value={{service.getSelectedBook().Published}}>
+              </mat-form-field>
+              
+            </form>
+          </div>
+        </div>
+
+        <div class="modal-footer model-m">
+          <button type="button" class="btn btn-secondary
+          " data-dismiss="modal">Cancel</button>
+          <button *ngIf="service.getflag()" type="button" class="btn btn-primary 
+          " data-dismiss="modal" [disabled]="!profileForm.valid"   (click)="save(profileForm)">Save </button>
+          <button *ngIf="!service.getflag()" type="button" class="btn btn-primary 
+          " data-dismiss="modal" (click)="save(profileForm)">Delete </button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">NEW BOOK</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="profileForm" #ngform  class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="enter id " formControlName="id" required>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="enter path for image" formControlName="pic">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="please enter title" formControlName="title"  required>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="please enter authors" formControlName="authors" required>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input type="date" max="2018-09-25" matInput placeholder="please enter Published" formControlName="Published" required>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" [disabled]="!profileForm.valid" data-dismiss="modal" (click)="saveBook(profileForm)" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
