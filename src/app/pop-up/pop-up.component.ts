@@ -62,6 +62,7 @@ export class PopUpComponent implements OnInit {
   }
   cancel() {
     this.isSaved = false;
+    this.isSaved = false;
 
   }
   ngOnInit() { }

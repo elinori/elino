@@ -32,9 +32,7 @@
                 <input  type="date" required matInput placeholder  formControlName="Published" value={{service.getSelectedBook().Published}}>
 
               </mat-form-field>
-              <div *ngIf="isError">
-
-              </div>
+            
 
             </form>
 
@@ -48,7 +46,7 @@
  </div>
 
  <div *ngIf="isError" class="alert alert-danger mmesage">
-  <strong>not valid date </strong>.
+  <strong>not valid date, the date is biger then today </strong>.
 </div>
           <button type="button" class="btn btn-secondary
           " data-dismiss="modal" (click)="cancel()">Cancel</button>
