@@ -26,7 +26,10 @@
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
     "moment": "^2.22.2",
+    "ng4-validators": "^6.0.1",
+    "ngx-custom-validators": "^6.1.0",
     "rxjs": "~6.2.0",
+    "validator": "^10.7.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

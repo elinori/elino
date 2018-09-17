@@ -25,7 +25,7 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input type="date" max="2018-09-25" matInput placeholder="please enter Published" formControlName="Published" required>
+            <input type="date"  matInput placeholder="please enter Published" formControlName="Published" required>
           </mat-form-field>
         </form>
       </div>
@@ -34,6 +34,9 @@
     <strong>DONE</strong> DONE.
   </div><div *ngIf="isError" class="alert alert-danger mmesage  ">
       <strong>Error</strong> Sorry this book name exsist!.
+    </div>
+    <div *ngIf="errormsg" class="alert alert-danger mmesage  ">
+      <strong>Error</strong> date not vslid!.
     </div>
     
   

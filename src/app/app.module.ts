@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CustomFormsModule } from 'ngx-custom-validators';
 
 import {MatListModule} from '@angular/material/list';
 import { HttpModule } from '@angular/http';
@@ -35,6 +36,7 @@ import { BookComponent } from './book/book.component';
     BrowserModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    CustomFormsModule,
     NoopAnimationsModule,
     MatButtonModule, MatCheckboxModule,
     MatListModule,

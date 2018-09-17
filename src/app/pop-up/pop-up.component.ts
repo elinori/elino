@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Ibook } from '../interface/ibook';
 import { ServiceService } from '../service/service.service';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import * as moment from 'moment';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pop-up',
@@ -12,11 +11,9 @@ import * as moment from 'moment';
 export class PopUpComponent implements OnInit {
   selected: Ibook;
   profileForm: FormGroup
-  patternForString = "/^[A-Za-z]+$/";
-  date_regex = "0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d";
   flage: boolean;
   isSaved = false;
-  max: string;
+  isError = false;
   isErrorletter: boolean;
   @Output()
   deletebook: EventEmitter<Ibook> = new EventEmitter<Ibook>()
@@ -32,7 +29,7 @@ export class PopUpComponent implements OnInit {
     this.service.getSelectedBook().Published = date;
     this.profileForm = this.fb.group({
       authors: [this.service.getSelectedBook().authors, Validators.required],
-      Published: [this.service.getSelectedBook().Published, Validators.required],
+      Published: [this.service.getSelectedBook().Published],
       pic: [this.service.getSelectedBook().pic],
       title: [this.service.getSelectedBook().title, Validators.required]
     });
@@ -47,10 +44,17 @@ export class PopUpComponent implements OnInit {
     else {
       ngForm.value['Published'] = Intl.DateTimeFormat('en-US').format(new Date(ngForm.value['Published']))
       ngForm.value['id'] = this.service.getSelectedBook().id;
-      this.savebook.emit(ngForm.value);
-      this.isSaved = true;
+      if (new Date(ngForm.value['Published']) < new Date()) {
+        this.savebook.emit(ngForm.value);
 
+        this.isSaved = true;
+        this.isError = false;
 
+      }
+      else {
+        this.isError = true;
+        this.isSaved = false;
+      }
 
     }
 

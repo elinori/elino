@@ -11,10 +11,9 @@ import { FilterPipe } from '../filter/filter.pipe';
 })
 export class NewBookComponent implements OnInit {
   profileForm: FormGroup
-  pattern = "[a-zA-Z][a-zA-Z ]+";
-  date_regex = "[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])";
   isSaved = false;
   isError = false;
+  errormsg = false;
 
   @Input()
   books: Ibook[]
@@ -30,14 +29,15 @@ export class NewBookComponent implements OnInit {
 
     this.profileForm = this.fb.group({
       authors: [''],
-      Published: ['', Validators.pattern(this.date_regex)],
+      Published: [''],
       pic: [""],
-      title: ['', Validators.pattern(this.pattern)],
+      title: [''],
       id: ['', Validators.required]
     });
   }
 
   saveBook(ngform) {
+
     ngform.value['Published'] = Intl.DateTimeFormat('en-US').format(new Date(ngform.value['Published']))
     ngform.value['title'] = new FilterPipe().transform(ngform.value['title']);
     var found = this.books.find(function (element) {
@@ -47,13 +47,27 @@ export class NewBookComponent implements OnInit {
       }
     });
     if (!found) {
-      this.add.emit(ngform.value);
-      this.isSaved = true;
-      this.isError = false;
+      if (new Date(ngform.value['Published']) < new Date()) {
+
+        this.add.emit(ngform.value);
+        this.isSaved = true;
+        this.isError = false;
+        this.errormsg = false;;
+
+      }
+      else {
+
+        this.errormsg = true;
+        this.isSaved = false;
+        this.isError = false
+      }
+
     }
     else {
       this.isSaved = false;
       this.isError = true;
+      this.errormsg = false;
+
     }
     this.createForm();
 
