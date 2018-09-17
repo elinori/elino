@@ -15,7 +15,7 @@ export class PopUpComponent implements OnInit {
   patternForString = "/^[A-Za-z]+$/";
   date_regex = "0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[012])/((19|20)\\d\\d";
   flage: boolean;
-  isSaved =false;
+  isSaved = false;
   max: string;
   isErrorletter: boolean;
   @Output()
@@ -41,23 +41,23 @@ export class PopUpComponent implements OnInit {
 
     if (this.service.getflag() == false) {
       this.deletebook.emit(this.service.getSelectedBook());
-      this.isSaved=true;
+      this.isSaved = true;
 
     }
     else {
       ngForm.value['Published'] = Intl.DateTimeFormat('en-US').format(new Date(ngForm.value['Published']))
       ngForm.value['id'] = this.service.getSelectedBook().id;
       this.savebook.emit(ngForm.value);
-      this.isSaved=true;
+      this.isSaved = true;
 
 
 
     }
-   
+
     this.creteForm()
   }
-  cancel(){
-    this.isSaved=false;
+  cancel() {
+    this.isSaved = false;
 
   }
   ngOnInit() { }
