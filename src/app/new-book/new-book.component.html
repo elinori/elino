@@ -29,9 +29,17 @@
           </mat-form-field>
         </form>
       </div>
+      
+<div *ngIf="isSaved" class="alert alert-success mmesage">
+    <strong>DONE</strong> DONE.
+  </div><div *ngIf="isError" class="alert alert-danger mmesage  ">
+      <strong>Error</strong> Sorry this book name exsist!.
+    </div>
+    
+  
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" [disabled]="!profileForm.valid" data-dismiss="modal" (click)="saveBook(profileForm)" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">Close</button>
+        <button type="button" [disabled]="!profileForm.valid"  (click)="saveBook(profileForm)" class="btn btn-primary">Save changes</button>
       </div>
 
     </div>

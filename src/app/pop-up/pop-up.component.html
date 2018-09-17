@@ -37,12 +37,17 @@
         </div>
 
         <div class="modal-footer model-m">
+              
+        <div *ngIf="isSaved" class="alert alert-success mmesage">
+            <strong>DONE</strong> DONE.
+ </div>
           <button type="button" class="btn btn-secondary
-          " data-dismiss="modal">Cancel</button>
+          " data-dismiss="modal" (click)="cancel()">Cancel</button>
           <button *ngIf="service.getflag()" type="button" class="btn btn-primary 
-          " data-dismiss="modal" [disabled]="!profileForm.valid" (click)="save(profileForm)">Save </button>
+          " [disabled]="!profileForm.valid" (click)="save(profileForm)">Save </button>
           <button *ngIf="!service.getflag()" type="button" class="btn btn-primary 
-          " data-dismiss="modal" (click)="save(profileForm)">Delete </button>
+          "  (click)="save(profileForm)">Delete </button>
+      
         </div>
       </div>
     </div>

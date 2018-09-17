@@ -19,8 +19,6 @@ export class BooksComponent implements OnInit {
   selectedRow: any;
   isshow = false;
   mySelected: Ibook;
-  isSaved = false;
-  isError = false;
   new = false;
   patternForString = "[a-zA-Z][a-zA-Z ]+";
   date_regex = "^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$";
@@ -42,8 +40,6 @@ export class BooksComponent implements OnInit {
         this.books.splice(i, 1);
       }
     }
-    this.isSaved = true;
-    this.isError = false;
   }
   add() {
     this.new = true;
@@ -58,30 +54,11 @@ export class BooksComponent implements OnInit {
 
       }
     });
-
-    this.isSaved = true;
-    this.isError = false;
   }
   addbook(event) {
     this.new = true;
     event.title = new FilterPipe().transform(event.title);
-    var found = this.books.find(function (element) {
-      element.title = new FilterPipe().transform(element.title);
-      if (element.title.trim() === event.title.trim()) {
-        return true;
-      }
-
-    });
-    if (!found) {
-      this.books.push(event);
-      this.isSaved = true;
-      this.isError = false;
-
-    } else {
-      this.isSaved = false;
-      this.isError = true;
-
-    }
+    this.books.push(event);
 
   }
 

@@ -2,14 +2,8 @@
 
   Books</a>
 
-<div *ngIf="isSaved" class="alert alert-success mmesage">
-  <strong>DONE</strong> DONE.
-</div>
 <button class="btn btn-primary but-style" (click)="add()" type="button" data-toggle="modal" data-target="#exampleModal">NEW BOOK</button>
 
-<div *ngIf="isError" class="alert alert-danger mmesage  ">
-  <strong>Error</strong> Sorry this book name exsist!.
-</div>
 <div class="books">
 
   <mat-accordion>
@@ -51,5 +45,5 @@
   <app-pop-up (savebook)="saveBook($event)" (deletebook)="deleteBook($event)"></app-pop-up>
 </div>
 <div *ngIf="new">
-  <app-new-book (add)="addbook($event)"></app-new-book>
+  <app-new-book [books]="books" (add)="addbook($event)"></app-new-book>
 </div>
